@@ -1,26 +1,49 @@
-﻿namespace ClassAndObject
+﻿using System;
+using ClassAndObject.Perpustakaan;
+using ClassAndObject.Kendaraan;
+using ClassAndObject.TokoLaptop;
+using ClassAndObject.TokoSepeda;
+using ClassAndObject.OperasiMatematika;
+
+namespace ClassAndObject
 {
-    internal class Program
+    class Program
     {
         static void Main(string[] args)
         {
-            // Buku
-           
+            Buku buku = new Buku("Nama Buku", "Penulis Buku", 2021);
+            buku.TampilkanInfo();
 
-            // Kendaraan
+            Mobil mobil = new Mobil("Toyota", "Corolla", 2020);
+            mobil.TampilkanSpesifikasi();
 
-           
+            Laptop laptop = new Laptop("Dell", "Intel Core i7", 16, 512);
+            laptop.TampilkanSpesifikasi();
 
-            // Laptop
-           
-           
-            // Sepeda
-            
+            Sepeda sepeda = new Sepeda("Polygon", "Mountain Bike", 14.5);
+            sepeda.TampilkanInformasi();
 
-            // Kalkulator
-            
+            Kalkulator kalkulator = new Kalkulator();
 
+            double penjumlahan = kalkulator.Tambah(5, 3);
+            double pengurangan = kalkulator.Kurang(5, 3);
+            double perkalian = kalkulator.Kali(5, 3);
+            double pembagian = kalkulator.Bagi(6, 3);
 
+            Console.WriteLine("Hasil Penjumlahan: " + penjumlahan);
+            Console.WriteLine("Hasil Pengurangan: " + pengurangan);
+            Console.WriteLine("Hasil Perkalian: " + perkalian);
+            Console.WriteLine("Hasil Pembagian: " + pembagian);
+
+            try
+            {
+                double hasilBagiNol = kalkulator.Bagi(3.5, 0);
+                Console.WriteLine("Hasil pembagian dengan nol: " + hasilBagiNol);
+            }
+            catch (DivideByZeroException e)
+            {
+                Console.WriteLine("Kesalahan: " + e.Message);
+            }
         }
     }
 }
